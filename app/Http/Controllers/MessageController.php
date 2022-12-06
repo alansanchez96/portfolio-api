@@ -12,7 +12,7 @@ class MessageController extends Controller
     {
         $message = $request->validated();
 
-        Message::created(
+        Message::create(
             $request->only($message)
         );
 
