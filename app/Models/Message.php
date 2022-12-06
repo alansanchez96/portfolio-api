@@ -9,5 +9,5 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $filled = [];
+    protected $guarded = [];
 }

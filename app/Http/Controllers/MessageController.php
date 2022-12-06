@@ -10,10 +10,12 @@ class MessageController extends Controller
 {
     public function contact(MessageRequest $request)
     {
-        $message = $request->validated();
-
         Message::create(
-            $request->only($message)
+            $request->only(
+                'name',
+                'email',
+                'message'
+            )
         );
 
         return response()->json([
