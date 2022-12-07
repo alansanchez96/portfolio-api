@@ -31,8 +31,8 @@ class StackController extends Controller
         ]);
     }
 
-    public function getStacks()
+    public function getAllStacks()
     {
-        
+        return Stack::all();
     }
 }

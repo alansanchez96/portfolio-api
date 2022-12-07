@@ -34,3 +34,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::controller(MessageController::class)->group(function () {
     Route::post('/contact/message', 'contact');
 });
+
+Route::get('/stacks-tecnologicos', [StackController::class, 'getAllStacks']);
