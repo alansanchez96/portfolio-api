@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\StackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user/profile', [AuthController::class, 'userProfile']);
     Route::get('/logout', [AuthController::class, 'logout']);
+    Route::post('/stacks-tecnologicos', [StackController::class, 'stacks']);
 });
 
 Route::controller(MessageController::class)->group(function () {
