@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user/profile', [AuthController::class, 'userProfile']);
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/stacks-tecnologicos', [StackController::class, 'stacks']);
+    Route::put('/stacks-tecnologicos/update/{id}', [StackController::class, 'updateStack']);
+    Route::delete('/stacks-tecnologicos/delete/{id}', [StackController::class, 'destroyStack']);
 });
 
 Route::controller(MessageController::class)->group(function () {

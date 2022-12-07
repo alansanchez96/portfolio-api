@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stack;
+use Illuminate\Http\Request;
 use App\Http\Requests\StackRequest;
 use App\Http\Controllers\Controller;
 
@@ -28,11 +29,50 @@ class StackController extends Controller
         return response()->json([
             'status' => 1,
             'message' => 'Se ha creado correctamente.'
-        ]);
+        ], 200);
     }
 
     public function getAllStacks()
     {
-        return Stack::all();
+        return response()->json(Stack::all(), 200);
+    }
+
+    public function updateStack(Request $request, $id)
+    {
+        $stack = Stack::findOrFail($id);
+
+        if (!isset($stack)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Stack no encontrado'
+            ]);
+        }
+
+        $stack->update($request->all());
+
+        return response()->json([
+            'status' => 1,
+            'message' => 'Actualizado correctamente',
+            'stack' => $stack
+        ], 200);
+    }
+
+    public function destroyStack($id)
+    {
+        $stack = Stack::findOrFail($id);
+
+        if (!isset($stack)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Stack no encontrado'
+            ]);
+        }
+
+        $stack->delete();
+
+        return response()->json([
+            'status' => 1,
+            'message' => 'Stack eliminado'
+        ]);
     }
 }
