@@ -22,7 +22,7 @@ class StackController extends Controller
         Stack::create([
             'name' => $request->name,
             'state' => $request->state,
-            'image' => $img
+            'image' => 'storage/' . $img
         ]);
 
         return response()->json([
