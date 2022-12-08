@@ -48,13 +48,26 @@ class StackController extends Controller
             ]);
         }
 
-        $stack->update($request->all());
+        if ($request->hasFile('image')) {
+            $img = $request->file('image')->store('stacks');
+        } else {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Ocurrio un error. Verifica bien los campos.'
+            ]);
+        }
+
+        $stack->update([
+            'name' => $request->name,
+            'state' => $request->state,
+            'image' => 'storage/' . $img
+        ]);
 
         return response()->json([
             'status' => 1,
             'message' => 'Actualizado correctamente',
             'stack' => $stack
-        ], 200);
+        ]);
     }
 
     public function destroyStack($id)
