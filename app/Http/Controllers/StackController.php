@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class StackController extends Controller
 {
-    public function stacks(StackRequest $request)
+    public function craeteStack(StackRequest $request)
     {
         if ($request->hasFile('image')) {
             $img = $request->file('image')->store('stacks');
