@@ -59,9 +59,10 @@ class ProjectController extends Controller
         }
 
         $project->update([
-            'name' => $request->name,
-            'state' => $request->state,
-            'image' => 'storage/' . $img
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => 'storage/' . $img,
+            'url' => $request->url,
         ]);
 
         return response()->json([
