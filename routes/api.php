@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('/stacks-tecnologicos/delete/{id}', [StackController::class, 'destroyStack']);
 
     Route::post('/projects/create', [ProjectController::class, 'createProject']);
+    Route::post('/projects/update/{id}', [ProjectController::class, 'updateProject']);
+    Route::delete('/projects/delete/{id}', [ProjectController::class, 'destroyProject']);
 });
 
 Route::controller(MessageController::class)->group(function () {
