@@ -12,5 +12,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('/projects/delete/{id}', [ProjectDestroy::class, 'destroyProject']);
 });
 
-
 Route::get('/projects', [GetAllProjects::class, 'getAllProjects']);
