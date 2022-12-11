@@ -2,10 +2,13 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\StackController;
+use App\Http\Controllers\Stack\StackController;
+use App\Http\Controllers\Message\MessageController;
+use App\Http\Controllers\Project\ProjectCreateController;
+use App\Http\Controllers\Project\ProjectUpdateController;
+use App\Http\Controllers\Project\GetAllProjectsController;
+use App\Http\Controllers\Project\ProjectDestroyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +21,7 @@ use App\Http\Controllers\StackController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+require __DIR__ . '/projects.php';
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/user/login', 'login');
@@ -33,10 +34,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/stacks-tecnologicos/create', [StackController::class, 'craeteStack']);
     Route::post('/stacks-tecnologicos/update/{id}', [StackController::class, 'updateStack']);
     Route::delete('/stacks-tecnologicos/delete/{id}', [StackController::class, 'destroyStack']);
-
-    Route::post('/projects/create', [ProjectController::class, 'createProject']);
-    Route::post('/projects/update/{id}', [ProjectController::class, 'updateProject']);
-    Route::delete('/projects/delete/{id}', [ProjectController::class, 'destroyProject']);
 });
 
 Route::controller(MessageController::class)->group(function () {
@@ -44,4 +41,3 @@ Route::controller(MessageController::class)->group(function () {
 });
 
 Route::get('/stacks-tecnologicos', [StackController::class, 'getAllStacks']);
-Route::get('/projects', [ProjectController::class, 'getAllProjects']);
