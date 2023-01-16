@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Project\Contracts;
 
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Project\ProjectCollection;
 
 interface GetAllProjectsInterface
 {
     /**
      * Genera un JSON con todos los proyectos creados
      *
-     * @return JsonResponse
+     * @return ProjectCollection|JsonResource
      */
-    public function getAllProjects(): JsonResponse;
+    public function getAllProjects(): ProjectCollection|JsonResource;
 }

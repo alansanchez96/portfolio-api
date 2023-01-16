@@ -29,7 +29,7 @@ trait JsonResponses
     }
 
     /**
-     * Retorna una respuesta JSON de un model no encontrado
+     * Retorna una respuesta JSON de un Entity no encontrada
      *
      * @param string $model
      * @return HttpJsonResponse

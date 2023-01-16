@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Concerns\GetFile;
-use App\Concerns\JsonResponses;
 use App\Models\Project;
+use App\Concerns\GetFile;
 use Illuminate\Http\Request;
+use App\Concerns\JsonResponses;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Project\Contracts\ProjectUpdateInterface;
@@ -29,7 +29,7 @@ class ProjectUpdateController extends Controller implements ProjectUpdateInterfa
         $project = Project::findOrFail($id);
 
         if (!isset($project)) {
-            return $this->responseModelNotFound('Proyecto');
+            return $this->responseEntityNotFound('Proyecto');
         }
 
         $file = $this->getFile($request, 'image', 'projects');

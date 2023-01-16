@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Project\GetProjectController as GetProject;
 use App\Http\Controllers\Project\ProjectCreateController as ProjectCreate;
 use App\Http\Controllers\Project\ProjectUpdateController as ProjectUpdate;
 use App\Http\Controllers\Project\GetAllProjectsController as GetAllProjects;
@@ -12,4 +13,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('/projects/delete/{id}', [ProjectDestroy::class, 'destroyProject']);
 });
 
-Route::get('/projects', [GetAllProjects::class, 'getAllProjects']);
+Route::get('/projects', [GetAllProjects::class, 'getAllProjects'])->name('api.getAllProjects');
+Route::get('/project/{id}', [GetProject::class, 'getProject'])->name('api.getProject');

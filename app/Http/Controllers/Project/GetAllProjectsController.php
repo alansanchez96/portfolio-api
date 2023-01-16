@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Project;
 
 use App\Models\Project;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Project\ProjectCollection;
 use App\Http\Controllers\Project\Contracts\GetAllProjectsInterface;
 
 class GetAllProjectsController extends Controller implements GetAllProjectsInterface
@@ -12,10 +13,10 @@ class GetAllProjectsController extends Controller implements GetAllProjectsInter
     /**
      * Genera un JSON con todos los proyectos creados
      *
-     * @return JsonResponse
+     * @return ProjectCollection|JsonResource
      */
-    public function getAllProjects(): JsonResponse
+    public function getAllProjects(): ProjectCollection|JsonResource
     {
-        return response()->json(Project::all(), 200);
+        return ProjectCollection::make(Project::all());
     }
 }
