@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Stack\Contracts;
 
-use Illuminate\Http\JsonResponse;
+use App\Http\Resources\Stack\StackCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 interface GetAllStacksInterface
 {
     /**
      * Retorna una respusta JSON todos los registros almacenados.
      *
-     * @return JsonResponse
+     * @return StackCollection|JsonResource
      */
-    public function getAllStacks(): JsonResponse;
+    public function getAllStacks(): StackCollection|JsonResource;
 }

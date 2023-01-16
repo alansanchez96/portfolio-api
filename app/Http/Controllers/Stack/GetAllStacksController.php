@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Stack;
 
 use App\Models\Stack;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Stack\StackCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Controllers\Stack\Contracts\GetAllStacksInterface;
 
 class GetAllStacksController extends Controller implements GetAllStacksInterface
@@ -12,10 +13,10 @@ class GetAllStacksController extends Controller implements GetAllStacksInterface
     /**
      * Retorna una respusta JSON todos los registros almacenados.
      *
-     * @return JsonResponse
+     * @return StackCollection|JsonResource
      */
-    public function getAllStacks(): JsonResponse
+    public function getAllStacks(): StackCollection|JsonResource
     {
-        return response()->json(Stack::all(), 200);
+        return StackCollection::make(Stack::all());
     }
 }

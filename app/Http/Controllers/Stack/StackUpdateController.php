@@ -29,7 +29,7 @@ class StackUpdateController extends Controller implements StackUpdateInterface
         $stack = Stack::findOrFail($id);
 
         if (!isset($stack)) {
-            return $this->responseModelNotFound('Stack');
+            return $this->responseEntityNotFound('Stack');
         }
 
         $file = $this->getFile($request, 'image', 'stacks');
