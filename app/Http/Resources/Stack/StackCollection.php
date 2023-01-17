@@ -21,6 +21,9 @@ class StackCollection extends ResourceCollection
             ],
             'meta' => [
                 'stacks_count' => $this->collection->count()
+            ],
+            'jsonapi' => [
+                'version' => '1.1'
             ]
         ];
     }

@@ -21,6 +21,9 @@ class MessageCollection extends ResourceCollection
             ],
             'meta' => [
                 'messages_count' => $this->collection->count()
+            ],
+            'jsonapi' => [
+                'version' => '1.1'
             ]
         ];
     }

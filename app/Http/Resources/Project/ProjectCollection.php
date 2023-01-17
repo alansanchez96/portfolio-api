@@ -21,6 +21,9 @@ class ProjectCollection extends ResourceCollection
             ],
             'meta' => [
                 'projects_count' => $this->collection->count()
+            ],
+            'jsonapi' => [
+                'version' => '1.1'
             ]
         ];
     }
