@@ -9,6 +9,7 @@ use App\Http\Controllers\Message\MessageController;
  */
 require __DIR__ . '/projects.php';
 require __DIR__ . '/stacks.php';
+require __DIR__ . '/information.php';
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/user/login', 'login');

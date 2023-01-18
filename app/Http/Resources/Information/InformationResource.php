@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Project;
+namespace App\Http\Resources\Information;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProjectResource extends JsonResource
+class InformationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,16 +15,13 @@ class ProjectResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'project',
+            'type' => 'information',
             'id' => $this->resource->getRouteKey(),
             'attributes' => [
-                'title' => $this->title,
-                'description' => $this->description,
-                'image' => $this->image,
-                'url' => $this->url
+                'url_pdf' => $this->url_pdf
             ],
             'links' => [
-                'self' => route('api.getProject', $this->resource)
+                'self' => route('api.getInformation', $this->resource)
             ]
         ];
     }

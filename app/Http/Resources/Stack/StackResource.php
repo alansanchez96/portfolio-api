@@ -20,7 +20,7 @@ class StackResource extends JsonResource
             'attributes' => [
                 'name' => $this->name,
                 'state' => $this->state,
-                'image' => 'storage/' . $this->image
+                'image' => $this->image
             ],
             'links' => [
                 'self' => route('api.getStack', $this->resource)
